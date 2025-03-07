@@ -1,66 +1,91 @@
-# Time-Mismatch
+# Employee Shift Report
 
-## Employee Time Mismatch
+This script processes an employee's work schedule, comparing their clock-in and clock-out times with the expected schedule. It generates reports for any discrepancies, such as missing clock-ins, clock-out times, and time mismatches.
 
-### Employee Shift Compliance Report Generator
+## Requirements
 
-## Overview
-The Python script processes employee shift data to determine compliance with an expected work schedule. The script cross-references actual clock-in and clock-out times against the predefined schedule and generates reports on irregularities such as missing shifts, extra or insufficient work hours, and unexpected attendance.
+- Python 3.x
+- `datetime` library (usually comes pre-installed with Python)
 
-## Key Components of the Code
+## How It Works
 
-### 1. Expected Work Schedule (`EXPECTED_SCHEDULE`)
-A dictionary that defines the expected work hours for each weekday. If an employee is not scheduled to work on certain days, the value is set to `(None, None)`.
+1. **Input Schedule**: The `EXPECTED_SCHEDULE` dictionary contains the expected clock-in and clock-out times for each day of the week.
+   - If an employee is not scheduled to work on a particular day, the value is set to `(None, None)`.
 
-### 2. JSON Shift Data (`json_body`)
-A JSON object containing the following key details:
-- The date range for which the report is generated (`date_range_start`, `date_range_end`).
-- The employee's shift records under the `shift_array` key, including:
-  - `shift_id`: Unique shift identifier.
-  - `employee_clock_in_time`: The recorded clock-in time.
-  - `employee_clock_out_time`: The recorded clock-out time (may be `None` if missing).
-  - `shift_sum`: Total time worked during the shift.
+2. **Shift Data**: The script uses shift data from a JSON structure, with clock-in and clock-out times for each shift.
+   - Each shift is linked to a date, and it contains information like the employee's first and last names, shift ID, and hours worked.
 
-## Processing Logic
+3. **Date Range**: The script checks for shifts between a given start and end date (`date_range_start` and `date_range_end`).
 
-### Step 1: Extract Shift Data
-- The script converts `employee_clock_in_time` from string format (e.g., `"February 26, 2025 10:01 AM"`) to a Python `datetime.date` object for easy lookup.
-- A dictionary `shift_dates` is created, mapping each date to its corresponding shift details.
+4. **Shift Validation**:
+   - For each day in the date range, it checks if the employee was expected to work.
+   - If the employee worked on a day they weren't scheduled to, it generates a report.
+   - If the employee didn't clock in on a scheduled day, it generates a report.
+   - It checks for time mismatches in clock-in and clock-out times, and reports late/early arrivals and departures.
 
-### Step 2: Iterate Through the Date Range
-- The script loops from `start_date` (`2025-02-01`) to `end_date` (`2025-02-28`), checking each day against the expected schedule.
-- The weekday name (e.g., `Monday`) is used to determine expected working hours.
+## Functions
 
-### Step 3: Determine Compliance
-For each day:
-- If no work is expected but a shift exists → Report **unexpected work**.
-- If work is expected but no shift exists → Report **missing clock-in**.
-- If a shift exists:
-  - Check for **missing clock-out**.
-  - Check for **extra or insufficient work time** by comparing `shift_sum` against expected hours.
-  - Check for **time mismatches**, such as incorrect clock-in time.
+### `calculate_time_diff(start_time, end_time)`
 
-### Step 4: Generate Reports
-- Reports are stored in a list `reports` with details about each non-compliance issue.
-- Finally, the reports are printed.
+Calculates the time difference between two datetime objects and returns the difference in hours, minutes, and seconds.
 
-## Potential Issues Detected by the Script
-The script flags the following discrepancies:
-- **Unscheduled Work** → Employee worked on a day they were not scheduled.
-- **Missed Shifts** → Employee did not clock in on a scheduled workday.
-- **Missing Clock-Out** → Employee failed to clock out.
-- **Overtime or Underworked Hours** → Employee worked more or less than expected.
-- **Time Mismatch** → Employee clocked in at a different time than scheduled.
+**Parameters:**
+- `start_time`: A datetime object representing the start time.
+- `end_time`: A datetime object representing the end time.
 
-## Example Output
-For an employee working from **10:00 AM to 2:00 PM** on **Mondays to Wednesdays**, possible outputs might look like:
-```
-Worked on Thursday 14, February 2025 when not scheduled.
-Didn't clock in on Monday 17, February 2025.
-Missing clock-out on Tuesday 18, February 2025.
-Extra time worked on Wednesday 19, February 2025: 15 minutes.
-Time mismatch on Monday 24, February 2025.
-```
+**Returns:**
+- A tuple `(hours, minutes, seconds)` representing the difference between the two times.
 
-## Conclusion
-This script effectively validates employee shift data against a predefined schedule, identifying inconsistencies in attendance records. The generated report provides actionable insights for payroll management and HR compliance.
+## Main Script Logic
+
+The script compares the actual clock-in and clock-out times for each day within a given date range against the `EXPECTED_SCHEDULE`. It checks the following conditions:
+
+- If the employee worked on a day that is scheduled as off (`None, None`), it generates a report.
+- If the employee missed a clock-in or clock-out time, it generates a report.
+- If there is a mismatch in clock-in or clock-out times, it calculates the time difference and adds the report accordingly.
+
+### Date Range:
+
+The `start_date` and `end_date` are derived from the `date_range_start` and `date_range_end` fields in `json_body`.
+
+### Shift Checking:
+
+The script iterates through each day in the date range and checks the shift data for that day. If the employee’s clock-in or clock-out time deviates from the expected schedule, a report is generated.
+
+## Usage
+
+1. Clone or download this repository.
+2. Ensure Python 3.x is installed.
+3. Modify the `EXPECTED_SCHEDULE` and `json_body` as needed for the employee and date range.
+4. Run the script:
+
+    ```bash
+    python Time-Mismatch.py
+    ```
+
+## Output
+
+The script will print the generated reports to the console, highlighting any mismatches or missed clock-in/out actions, as well as identifying if the employee worked on a scheduled off day.
+
+### Example Output:
+
+    ```bash
+    Worked on Tuesday 11, February 2025 when not scheduled.
+    Time mismatch on Wednesday 12, February 2025: Clocked in late by 4 hrs 59 mins 0 secs.
+    Time mismatch on Wednesday 12, February 2025: Clocked out late by 2 hrs 0 mins 0 secs.
+    Didn't clock in on Monday 17, February 2025
+    Worked on Thursday 27, February 2025 when not scheduled.
+    Didn't clock in on Friday 28, February 2025
+    Didn't clock-out on Friday 7, March 2025.
+    ```
+
+## Customization
+
+- You can modify the `EXPECTED_SCHEDULE` to match your organization's work schedule.
+- You can update the `json_body` with the actual shift data.
+- The date range in `date_range_start` and `date_range_end` can be adjusted as needed.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
