@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 
 EXPECTED_SCHEDULE = {
+    #Make sure to mention each day, and if the employee doesnt have a scheduled work on the day mention with (None, None)
     "Monday": ("1:00 PM","6:00 PM"),
     "Tuesday": ("8:00 AM", "1:00 PM"),
     "Wednesday": ("1:00 PM", "6:00 PM"),
