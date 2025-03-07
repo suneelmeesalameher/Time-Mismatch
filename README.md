@@ -14,6 +14,7 @@ This script processes an employee's work schedule, comparing their clock-in and 
 
 2. **Shift Data**: The script uses shift data from a JSON structure, with clock-in and clock-out times for each shift.
    - Each shift is linked to a date, and it contains information like the employee's first and last names, shift ID, and hours worked.
+   - Important: In the json_body, if there is any occurrence of null, replace it with None (Python's equivalent of null).
 
 3. **Date Range**: The script checks for shifts between a given start and end date (`date_range_start` and `date_range_end`).
 
