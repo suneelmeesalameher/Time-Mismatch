@@ -2,16 +2,167 @@ from datetime import datetime, timedelta
 
 EXPECTED_SCHEDULE = {
     #Make sure to mention each day, and if the employee doesnt have a scheduled work on the day mention with (None, None)
-    "Monday": ("1:00 PM","6:00 PM"),
-    "Tuesday": ("8:00 AM", "1:00 PM"),
-    "Wednesday": ("1:00 PM", "6:00 PM"),
+    "Monday": ("9:00 AM","4:00 PM"),
+    "Tuesday": (None, None),
+    "Wednesday": ("9:00 AM", "4:00 PM"),
     "Thursday": (None,None),
-    "Friday": ("8:00 AM","1:00 PM")
+    "Friday": ("9:00 AM","4:00 PM")
 }
 
 json_body ={
-    #JSON BODY from the reports section of Time Clock Lite, Make sure to replace null with NONE
+    # Replace null with None
+  "response": "success",
+  "employee": 164,
+  "date_range_start": "2025-02-01 00:00:00",
+  "date_range_end": "2025-03-07 22:00:00",
+  "report_action": "generate_report",
+  "shifts": {
+    "response": "success",
+    "shift_count": 16,
+    "shift_total_time": "79:59",
+    "wage_total": "0.00",
+    "shift_array": [
+      {
+        "shift_id": 27750,
+        "employee_clock_in_time": "March 5, 2025 9:00 am",
+        "employee_clock_out_time": "March 5, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27727,
+        "employee_clock_in_time": "March 7, 2025 9:00 am",
+        "employee_clock_out_time": None,
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "00:00"
+      },
+      {
+        "shift_id": 27558,
+        "employee_clock_in_time": "March 3, 2025 9:00 am",
+        "employee_clock_out_time": "March 3, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27460,
+        "employee_clock_in_time": "February 27, 2025 9:00 am",
+        "employee_clock_out_time": "February 27, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27441,
+        "employee_clock_in_time": "February 13, 2025 1:00 pm",
+        "employee_clock_out_time": "February 13, 2025 6:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "5:00"
+      },
+      {
+        "shift_id": 27440,
+        "employee_clock_in_time": "February 12, 2025 1:00 pm",
+        "employee_clock_out_time": "February 12, 2025 6:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "5:00"
+      },
+      {
+        "shift_id": 27439,
+        "employee_clock_in_time": "February 11, 2025 1:00 pm",
+        "employee_clock_out_time": "February 11, 2025 6:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "5:00"
+      },
+      {
+        "shift_id": 27398,
+        "employee_clock_in_time": "February 26, 2025 9:00 am",
+        "employee_clock_out_time": "February 26, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27262,
+        "employee_clock_in_time": "February 21, 2025 9:00 am",
+        "employee_clock_out_time": "February 21, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27222,
+        "employee_clock_in_time": "February 21, 2025 9:03 am",
+        "employee_clock_out_time": "February 21, 2025 4:03 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "6:59"
+      },
+      {
+        "shift_id": 27167,
+        "employee_clock_in_time": "February 20, 2025 9:00 am",
+        "employee_clock_out_time": "February 20, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27096,
+        "employee_clock_in_time": "February 19, 2025 9:00 am",
+        "employee_clock_out_time": "February 19, 2025 4:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "7:00"
+      },
+      {
+        "shift_id": 27021,
+        "employee_clock_in_time": "February 14, 2025 1:00 pm",
+        "employee_clock_out_time": "February 14, 2025 6:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "5:00"
+      },
+      {
+        "shift_id": 27008,
+        "employee_clock_in_time": "February 13, 2025 6:04 pm",
+        "employee_clock_out_time": "February 13, 2025 6:04 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "0:00"
+      },
+      {
+        "shift_id": 26998,
+        "employee_clock_in_time": "February 13, 2025 1:06 pm",
+        "employee_clock_out_time": None,
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "00:00"
+      },
+      {
+        "shift_id": 26942,
+        "employee_clock_in_time": "February 12, 2025 1:59 pm",
+        "employee_clock_out_time": "February 12, 2025 6:00 pm",
+        "first_name": "MeherSuneel",
+        "last_name": "Meesala",
+        "shift_sum": "4:00"
+      }
+    ]
+  }
 }
+
+
+# Helper function to calculate the time difference
+def calculate_time_diff(start_time, end_time):
+    # Calculate time difference
+    time_diff = end_time - start_time
+    hours, remainder = divmod(time_diff.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    return hours, minutes, seconds
+
 # Collect shifts data
 shifts = json_body["shifts"]["shift_array"]
 shift_dates = {datetime.strptime(shift["employee_clock_in_time"], "%B %d, %Y %I:%M %p").date(): shift for shift in shifts}
@@ -46,31 +197,40 @@ while current_day <= end_date:
     else:
         shift = shift_dates[current_day.date()]
         clock_in_time = datetime.strptime(shift["employee_clock_in_time"], "%B %d, %Y %I:%M %p")
-        
-        if shift["employee_clock_out_time"] is None:
-            # Missing clock-out
-            reports.append(f"Missing clock-out on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}")
-        
-        # Calculate actual work time
-        shift_end_time = clock_in_time + timedelta(hours=int(shift["shift_sum"].split(":")[0]), minutes=int(shift["shift_sum"].split(":")[1]))
-        expected_end_time = datetime.strptime(f"{current_day.strftime('%B')} {current_day.day}, {current_day.year} {expected_out}", "%B %d, %Y %I:%M %p") if expected_out else None
-        
-        # If shift clock-out exists and time mismatch detected
-        if expected_end_time:
-            if shift_end_time > expected_end_time:
-                extra_time = shift_end_time - expected_end_time
-                reports.append(f"Extra time worked on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: {extra_time}")
-            elif shift_end_time < expected_end_time:
-                less_time = expected_end_time - shift_end_time
-                reports.append(f"Less time worked on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: {less_time}")
-        
-        # If there's a mismatch (e.g., incorrect clock-in or clock-out time)
-        if shift["employee_clock_in_time"] != expected_in:
-            reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}")
+        clock_out_time = shift["employee_clock_out_time"]
 
+        if clock_out_time is not None:
+            clock_out_time = datetime.strptime(clock_out_time, "%B %d, %Y %I:%M %p")
+
+        # Check if the employee clock-in matches the expected clock-in time
+        expected_in_time = datetime.strptime(f"{current_day.strftime('%B')} {current_day.day}, {current_day.year} {expected_in}", "%B %d, %Y %I:%M %p")
+        
+        if clock_in_time != expected_in_time:
+            # Calculate time difference for late/early clock-in
+            if clock_in_time > expected_in_time:
+                hours, minutes, seconds = calculate_time_diff(expected_in_time, clock_in_time)
+                reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked in late by {hours} hrs {minutes} mins {seconds} secs.")
+            elif clock_in_time < expected_in_time:
+                hours, minutes, seconds = calculate_time_diff(clock_in_time, expected_in_time)
+                reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked in early by {hours} hrs {minutes} mins {seconds} secs.")
+        if clock_out_time is None:
+            # Report that no clock-out time was registered
+            reports.append(f"Didn't clock-out on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}.") 
+        # Check for clock-out mismatch (if exists)
+        if clock_out_time:
+            expected_out_time = datetime.strptime(f"{current_day.strftime('%B')} {current_day.day}, {current_day.year} {expected_out}", "%B %d, %Y %I:%M %p")
+            
+            if clock_out_time != expected_out_time:
+                if clock_out_time > expected_out_time:
+                    hours, minutes, seconds = calculate_time_diff(expected_out_time, clock_out_time)
+                    reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked out late by {hours} hrs {minutes} mins {seconds} secs.")
+                elif clock_out_time < expected_out_time:
+                    hours, minutes, seconds = calculate_time_diff(clock_out_time, expected_out_time)
+                    reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked out early by {hours} hrs {minutes} mins {seconds} secs.")
+        
     # Move to the next day
     current_day += timedelta(days=1)
-print(EXPECTED_SCHEDULE)
+
 # Print reports
 for report in reports:
     print(report)
