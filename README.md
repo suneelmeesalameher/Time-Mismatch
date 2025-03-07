@@ -69,7 +69,7 @@ The script will print the generated reports to the console, highlighting any mis
 
 ### Example Output:
 
-    ```bash
+    ```
     Worked on Tuesday 11, February 2025 when not scheduled.
     Time mismatch on Wednesday 12, February 2025: Clocked in late by 4 hrs 59 mins 0 secs.
     Time mismatch on Wednesday 12, February 2025: Clocked out late by 2 hrs 0 mins 0 secs.
