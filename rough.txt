@@ -1,0 +1,12 @@
+can use -
+{
+Monday
+Friday}
+
+Name:{
+Monday:
+friday:
+}
+
+use pandas
+O/p - csv

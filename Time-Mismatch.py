@@ -2,158 +2,276 @@ from datetime import datetime, timedelta
 
 EXPECTED_SCHEDULE = {
     #Make sure to mention each day, and if the employee doesnt have a scheduled work on the day mention with (None, None)
-    "Monday": ("9:00 AM","4:00 PM"),
+    "Monday": (None,None),
     "Tuesday": (None, None),
-    "Wednesday": ("9:00 AM", "4:00 PM"),
-    "Thursday": (None,None),
-    "Friday": ("9:00 AM","4:00 PM")
+    "Wednesday": ("9:00 AM", "5:00 PM"),
+    "Thursday": ("9:00 AM", "5:00 PM"),
+    "Friday": ("9:00 AM", "1:00 PM")
 }
 
 json_body ={
-    # Replace null with None
   "response": "success",
-  "employee": 164,
-  "date_range_start": "2025-02-01 00:00:00",
-  "date_range_end": "2025-03-07 22:00:00",
+  "employee": 156,
+  "date_range_start": "2025-02-11 00:00:00",
+  "date_range_end": "2025-04-11 22:00:00",
   "report_action": "generate_report",
   "shifts": {
     "response": "success",
-    "shift_count": 16,
-    "shift_total_time": "79:59",
+    "shift_count": 31,
+    "shift_total_time": "161:33",
     "wage_total": "0.00",
     "shift_array": [
       {
-        "shift_id": 27750,
-        "employee_clock_in_time": "March 5, 2025 9:00 am",
-        "employee_clock_out_time": "March 5, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
-      },
-      {
-        "shift_id": 27727,
-        "employee_clock_in_time": "March 7, 2025 9:00 am",
+        "shift_id": 28737,
+        "employee_clock_in_time": "April 11, 2025 9:00 am",
         "employee_clock_out_time": None,
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "00:00"
       },
       {
-        "shift_id": 27558,
-        "employee_clock_in_time": "March 3, 2025 9:00 am",
-        "employee_clock_out_time": "March 3, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
+        "shift_id": 28695,
+        "employee_clock_in_time": "April 10, 2025 9:01 am",
+        "employee_clock_out_time": None,
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "00:00"
       },
       {
-        "shift_id": 27460,
+        "shift_id": 28670,
+        "employee_clock_in_time": "April 9, 2025 9:00 am",
+        "employee_clock_out_time": None,
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "00:00"
+      },
+      {
+        "shift_id": 28511,
+        "employee_clock_in_time": "April 4, 2025 9:00 am",
+        "employee_clock_out_time": "April 4, 2025 1:02 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "4:02"
+      },
+      {
+        "shift_id": 28487,
+        "employee_clock_in_time": "April 3, 2025 9:05 am",
+        "employee_clock_out_time": "April 3, 2025 5:07 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 28448,
+        "employee_clock_in_time": "April 2, 2025 9:03 am",
+        "employee_clock_out_time": "April 2, 2025 5:07 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:03"
+      },
+      {
+        "shift_id": 28321,
+        "employee_clock_in_time": "March 28, 2025 9:02 am",
+        "employee_clock_out_time": "March 28, 2025 1:02 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "3:59"
+      },
+      {
+        "shift_id": 28292,
+        "employee_clock_in_time": "March 27, 2025 9:04 am",
+        "employee_clock_out_time": "March 27, 2025 5:03 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "7:59"
+      },
+      {
+        "shift_id": 28251,
+        "employee_clock_in_time": "March 26, 2025 9:00 am",
+        "employee_clock_out_time": "March 26, 2025 5:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 28106,
+        "employee_clock_in_time": "March 20, 2025 9:00 am",
+        "employee_clock_out_time": "March 20, 2025 5:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:00"
+      },
+      {
+        "shift_id": 28071,
+        "employee_clock_in_time": "March 21, 2025 9:00 am",
+        "employee_clock_out_time": "March 21, 2025 1:03 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "4:02"
+      },
+      {
+        "shift_id": 28024,
+        "employee_clock_in_time": "March 19, 2025 9:00 am",
+        "employee_clock_out_time": "March 19, 2025 5:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 27963,
+        "employee_clock_in_time": "March 13, 2025 9:00 am",
+        "employee_clock_out_time": "March 13, 2025 5:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:00"
+      },
+      {
+        "shift_id": 27903,
+        "employee_clock_in_time": "March 14, 2025 9:00 am",
+        "employee_clock_out_time": "March 14, 2025 1:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "4:00"
+      },
+      {
+        "shift_id": 27888,
+        "employee_clock_in_time": "March 13, 2025 9:06 am",
+        "employee_clock_out_time": None,
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "00:00"
+      },
+      {
+        "shift_id": 27834,
+        "employee_clock_in_time": "March 12, 2025 9:00 am",
+        "employee_clock_out_time": "March 12, 2025 5:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:00"
+      },
+      {
+        "shift_id": 27729,
+        "employee_clock_in_time": "March 7, 2025 9:00 am",
+        "employee_clock_out_time": "March 7, 2025 1:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "4:00"
+      },
+      {
+        "shift_id": 27702,
+        "employee_clock_in_time": "March 6, 2025 9:00 am",
+        "employee_clock_out_time": "March 6, 2025 5:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 27654,
+        "employee_clock_in_time": "March 5, 2025 9:00 am",
+        "employee_clock_out_time": "March 5, 2025 5:17 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:17"
+      },
+      {
+        "shift_id": 27516,
+        "employee_clock_in_time": "February 28, 2025 9:00 am",
+        "employee_clock_out_time": "February 28, 2025 1:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "4:01"
+      },
+      {
+        "shift_id": 27461,
         "employee_clock_in_time": "February 27, 2025 9:00 am",
-        "employee_clock_out_time": "February 27, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "employee_clock_out_time": "February 27, 2025 5:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 27402,
+        "employee_clock_in_time": "February 26, 2025 9:00 am",
+        "employee_clock_out_time": "February 26, 2025 5:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "8:01"
+      },
+      {
+        "shift_id": 27221,
+        "employee_clock_in_time": "February 21, 2025 9:00 am",
+        "employee_clock_out_time": "February 21, 2025 4:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "7:01"
+      },
+      {
+        "shift_id": 27168,
+        "employee_clock_in_time": "February 20, 2025 9:00 am",
+        "employee_clock_out_time": "February 20, 2025 4:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "7:00"
       },
       {
-        "shift_id": 27441,
-        "employee_clock_in_time": "February 13, 2025 1:00 pm",
-        "employee_clock_out_time": "February 13, 2025 6:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "5:00"
-      },
-      {
-        "shift_id": 27440,
-        "employee_clock_in_time": "February 12, 2025 1:00 pm",
-        "employee_clock_out_time": "February 12, 2025 6:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "5:00"
-      },
-      {
-        "shift_id": 27439,
+        "shift_id": 27132,
         "employee_clock_in_time": "February 11, 2025 1:00 pm",
         "employee_clock_out_time": "February 11, 2025 6:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "5:00"
       },
       {
-        "shift_id": 27398,
-        "employee_clock_in_time": "February 26, 2025 9:00 am",
-        "employee_clock_out_time": "February 26, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
+        "shift_id": 27131,
+        "employee_clock_in_time": "February 12, 2025 1:00 pm",
+        "employee_clock_out_time": "February 12, 2025 6:00 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "5:00"
       },
       {
-        "shift_id": 27262,
-        "employee_clock_in_time": "February 21, 2025 9:00 am",
-        "employee_clock_out_time": "February 21, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
-      },
-      {
-        "shift_id": 27222,
-        "employee_clock_in_time": "February 21, 2025 9:03 am",
-        "employee_clock_out_time": "February 21, 2025 4:03 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "shift_id": 27100,
+        "employee_clock_in_time": "February 19, 2025 9:01 am",
+        "employee_clock_out_time": "February 19, 2025 4:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "6:59"
       },
       {
-        "shift_id": 27167,
-        "employee_clock_in_time": "February 20, 2025 9:00 am",
-        "employee_clock_out_time": "February 20, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
-      },
-      {
-        "shift_id": 27096,
-        "employee_clock_in_time": "February 19, 2025 9:00 am",
-        "employee_clock_out_time": "February 19, 2025 4:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "7:00"
-      },
-      {
-        "shift_id": 27021,
+        "shift_id": 27022,
         "employee_clock_in_time": "February 14, 2025 1:00 pm",
-        "employee_clock_out_time": "February 14, 2025 6:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "5:00"
+        "employee_clock_out_time": "February 14, 2025 6:01 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "5:01"
       },
       {
-        "shift_id": 27008,
-        "employee_clock_in_time": "February 13, 2025 6:04 pm",
-        "employee_clock_out_time": "February 13, 2025 6:04 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "shift_id": 26993,
+        "employee_clock_in_time": "February 13, 2025 1:00 pm",
+        "employee_clock_out_time": "February 13, 2025 6:03 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
+        "shift_sum": "5:03"
+      },
+      {
+        "shift_id": 26969,
+        "employee_clock_in_time": "February 12, 2025 6:04 pm",
+        "employee_clock_out_time": "February 12, 2025 6:04 pm",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "0:00"
       },
       {
-        "shift_id": 26998,
-        "employee_clock_in_time": "February 13, 2025 1:06 pm",
+        "shift_id": 26937,
+        "employee_clock_in_time": "February 12, 2025 1:04 pm",
         "employee_clock_out_time": None,
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
+        "first_name": "Samyukta",
+        "last_name": "Padmanabhuni",
         "shift_sum": "00:00"
-      },
-      {
-        "shift_id": 26942,
-        "employee_clock_in_time": "February 12, 2025 1:59 pm",
-        "employee_clock_out_time": "February 12, 2025 6:00 pm",
-        "first_name": "MeherSuneel",
-        "last_name": "Meesala",
-        "shift_sum": "4:00"
       }
     ]
   }
 }
-
 
 # Helper function to calculate the time difference
 def calculate_time_diff(start_time, end_time):
@@ -163,6 +281,17 @@ def calculate_time_diff(start_time, end_time):
     minutes, seconds = divmod(remainder, 60)
     return hours, minutes, seconds
 
+def add_to_total_time(total_hours, total_minutes, shift_time):
+    hours, minutes = map(int, shift_time.split(":"))
+    total_minutes += minutes
+    total_hours += hours + total_minutes // 60
+    total_minutes = total_minutes % 60
+    return total_hours, total_minutes
+
+total_time = {
+    "hours": 0,
+    "minutes": 0
+}
 # Collect shifts data
 shifts = json_body["shifts"]["shift_array"]
 shift_dates = {datetime.strptime(shift["employee_clock_in_time"], "%B %d, %Y %I:%M %p").date(): shift for shift in shifts}
@@ -227,10 +356,11 @@ while current_day <= end_date:
                 elif clock_out_time < expected_out_time:
                     hours, minutes, seconds = calculate_time_diff(clock_out_time, expected_out_time)
                     reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked out early by {hours} hrs {minutes} mins {seconds} secs.")
-        
+        total_time["hours"], total_time["minutes"] = add_to_total_time(total_time["hours"], total_time["minutes"], shift["shift_sum"])
     # Move to the next day
     current_day += timedelta(days=1)
 
 # Print reports
 for report in reports:
     print(report)
+print(f"Total time worked: {total_time['hours']} hours and {total_time['minutes']} minutes.")
