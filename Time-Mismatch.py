@@ -281,17 +281,7 @@ def calculate_time_diff(start_time, end_time):
     minutes, seconds = divmod(remainder, 60)
     return hours, minutes, seconds
 
-def add_to_total_time(total_hours, total_minutes, shift_time):
-    hours, minutes = map(int, shift_time.split(":"))
-    total_minutes += minutes
-    total_hours += hours + total_minutes // 60
-    total_minutes = total_minutes % 60
-    return total_hours, total_minutes
 
-total_time = {
-    "hours": 0,
-    "minutes": 0
-}
 # Collect shifts data
 shifts = json_body["shifts"]["shift_array"]
 shift_dates = {datetime.strptime(shift["employee_clock_in_time"], "%B %d, %Y %I:%M %p").date(): shift for shift in shifts}
@@ -299,6 +289,7 @@ shift_dates = {datetime.strptime(shift["employee_clock_in_time"], "%B %d, %Y %I:
 start_date = datetime.strptime(json_body["date_range_start"], "%Y-%m-%d %H:%M:%S")
 end_date = datetime.strptime(json_body["date_range_end"], "%Y-%m-%d %H:%M:%S")
 
+shift_total_time_str = json_body["shifts"]["shift_total_time"]
 # Generate missing clock-in or time mismatch reports
 reports = []
 
@@ -356,11 +347,11 @@ while current_day <= end_date:
                 elif clock_out_time < expected_out_time:
                     hours, minutes, seconds = calculate_time_diff(clock_out_time, expected_out_time)
                     reports.append(f"Time mismatch on {day_name} {current_day.day}, {current_day.strftime('%B')} {current_day.year}: Clocked out early by {hours} hrs {minutes} mins {seconds} secs.")
-        total_time["hours"], total_time["minutes"] = add_to_total_time(total_time["hours"], total_time["minutes"], shift["shift_sum"])
     # Move to the next day
     current_day += timedelta(days=1)
 
 # Print reports
 for report in reports:
     print(report)
-print(f"Total time worked: {total_time['hours']} hours and {total_time['minutes']} minutes.")
+print(f"Total time worked:")
+print(shift_total_time_str)
